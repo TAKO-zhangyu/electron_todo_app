@@ -13,8 +13,14 @@ export default class App extends Component {
 
   // データ保存
   handleAdd(e){
-    console.log(e.target.title.value);
-    e.preventDefault(); //これを書かないとリダイレクトされてしまう
+    // リダイレクト防止
+    e.preventDefault();
+    // フォームから受け取ったデータをオブジェクトに挿入して、stateのtodo配列に追加
+    this.state.todo.push({title: e.target.title.value}); // まだ保存されていない
+    // setStateを使ってstateを上書き
+    this.setState({todo: this.state.todo}); // 保存完了
+    // inputのvalueを空に
+    e.target.title.value = '';
   }
   render() {
     return (
@@ -22,7 +28,7 @@ export default class App extends Component {
         <h1 className="siimple-box-title siimple--color-white">React Todo App</h1>
         <Form handleAdd={this.handleAdd}/>
         <div className="siimple-rule"></div>
-        <List/>
+        <List todos={this.state.todo}/>
       </div>
     );
   }
