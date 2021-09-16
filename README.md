@@ -23,6 +23,11 @@ https://trello.com/1/cards/61145841cd68250a61c1b101/attachments/6117cb43078e861e
 - React
 - json
 
+#### 使用するパッケージ
+- Electron - Desktop Application Framework
+- Webpack - Module Bundler
+- Styled Component
+
 ### Webアプリ
 - Node.js
 - React
