@@ -35,6 +35,9 @@ export default class App extends Component {
 
   // データ更新
   handleUpdate(e, i){
+    // 中身をかけ
+    e.preventDefault();
+    console.log(e.target.title.value);
     this.state.todo[i].title = 'hoge';
     this.setState({todo: this.state.todo});
   }
