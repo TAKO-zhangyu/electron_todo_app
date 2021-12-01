@@ -10,7 +10,7 @@ export default class App extends Component {
     };
     this.handleAdd = this.handleAdd.bind(this);
     this.handleRemove = this.handleRemove.bind(this);
-    this.handleEdit = this.handleEdit.bind(this);
+    this.handleUpdate = this.handleUpdate.bind(this);
   }
 
   // データ保存
@@ -33,8 +33,9 @@ export default class App extends Component {
     this.setState({todo: this.state.todo});
   }
 
-  handleEdit(i){
-    this.state.todo.push({edit: true});
+  // データ更新
+  handleUpdate(e, i){
+    this.state.todo[i].title = 'hoge';
     this.setState({todo: this.state.todo});
   }
 
@@ -44,7 +45,11 @@ export default class App extends Component {
         <h1 className="siimple-box-title siimple--color-white">React Todo App</h1>
         <Form handleAdd={this.handleAdd}/>
         <div className="siimple-rule"></div>
-        <List todos={this.state.todo} handleRemove={this.handleRemove} handleEdit={this.handleEdit}/>
+        <List 
+          todos={this.state.todo}
+          handleRemove={this.handleRemove}
+          handleUpdate={this.handleUpdate}
+        />
       </div>
     );
   }

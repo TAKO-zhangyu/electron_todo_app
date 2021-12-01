@@ -9,6 +9,7 @@ const List = (props) => (
               todo={todo} 
               i={i} 
               handleRemove={props.handleRemove} 
+              handleUpdate={props.handleUpdate} 
         />
       )
     })}
