@@ -34,9 +34,8 @@ export default class App extends Component {
   }
 
   // データ更新
-  handleUpdate(e, i){
-    // 中身をかけ
-    this.state.todo[i].title = 'hoge';
+  handleUpdate(text, i){
+    this.state.todo[i].title = text;
     this.setState({todo: this.state.todo});
   }
 

@@ -15,12 +15,16 @@ const Todo = (props) => {
   const { i, todo } = props
 
   const [edit, setEdit] = useState(false);
+  const [text, setText] = useState('')
+
+  const handleChange = (e) => {
+    e.preventDefault();
+    setText(() => e.target.value)
+  }
 
   const handleTodoUpdate = (e) => {
-    e.preventDefault();
-    console.log(e);
     setEdit(false)
-    props.handleUpdate(e, i)
+    props.handleUpdate(text, i)
   }
 
   return (
@@ -47,7 +51,7 @@ const Todo = (props) => {
                 return(
                 <form className="siimple-form" onSubmit={props.handleUpdate}>
                   <div className="siimple-form-field" style={style}>
-                    <input name="title" type="text" value={props.title} className="siimple-input"/>
+                    <input name="title" type="text" value={text} onChange={handleChange} className="siimple-input"/>
                     <input type="submit" className="siimple-tag siimple-tag--green siimple-hover" style={btn} onClick={handleTodoUpdate}/>
                   </div>
                 </form>
