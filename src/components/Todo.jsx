@@ -19,7 +19,7 @@ const Todo = (props) => {
 
   const handleChange = (e) => {
     e.preventDefault();
-    setText(() => e.target.value)
+    setText(e.target.value)
   }
 
   const handleTodoUpdate = (e) => {
