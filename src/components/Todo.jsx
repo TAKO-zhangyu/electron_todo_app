@@ -34,28 +34,30 @@ const Todo = (props) => {
             (function() {
               if (edit) {
                 return(
-                  todo.title
+                  <form className="siimple-form" onSubmit={props.handleUpdate}>
+                    <div className="siimple-form-field">
+                      <input name="title" type="text" value={text} onChange={handleChange} className="siimple-input"/>
+                      <span className="siimple-tag siimple-tag--green siimple-hover" style={btn} onClick={handleTodoUpdate}>Update</span>
+                      <span className="siimple-tag siimple-tag--error siimple-hover" style={btn} onClick={() => props.handleRemove(i)}>Delete</span>
+                    </div>
+                  </form>
                 );
               } else {
                 return(
-                  todo.title
+                  <p>{todo.title}</p>
+                  // <span className="siimple-tag siimple-tag--green siimple-hover" style={btn} onClick={() => setEdit(true)}>Edit</span>
                 );
               }
             })()
           }
-          <span className="siimple-tag siimple-tag--error siimple-hover" style={btn} onClick={() => props.handleRemove(i)}>Delete</span>
+         
 
           {
             (function() {
               if (edit) {
-                return(
-                <form className="siimple-form" onSubmit={props.handleUpdate}>
-                  <div className="siimple-form-field" style={style}>
-                    <input name="title" type="text" value={text} onChange={handleChange} className="siimple-input"/>
-                    <input type="submit" className="siimple-tag siimple-tag--green siimple-hover" style={btn} onClick={handleTodoUpdate}/>
-                  </div>
-                </form>
-                );
+                // return(
+                // <span className="siimple-tag siimple-tag--green siimple-hover" style={btn} onClick={handleTodoUpdate}>Update</span>
+                // );
               } else {
                 return(
                 <span className="siimple-tag siimple-tag--green siimple-hover" style={btn} onClick={() => setEdit(true)}>Edit</span>
