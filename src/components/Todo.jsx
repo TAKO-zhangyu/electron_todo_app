@@ -15,7 +15,7 @@ const Todo = (props) => {
   const { i, todo } = props
 
   const [edit, setEdit] = useState(false);
-  const [text, setText] = useState('')
+  const [text, setText] = useState(todo.title)
 
   const handleChange = (e) => {
     e.preventDefault();
@@ -29,39 +29,17 @@ const Todo = (props) => {
 
   return (
         <li key={i} className="siimple-list-item siimple--bg-white" style={style}>
-
           {
-            (function() {
-              if (edit) {
-                return(
-                  todo.title
-                );
-              } else {
-                return(
-                  todo.title
-                );
-              }
-            })()
+            edit
+              ? <input name="title" type="text" value={text} onChange={handleChange} className="siimple-input"/>
+              : todo.title
           }
           <span className="siimple-tag siimple-tag--error siimple-hover" style={btn} onClick={() => props.handleRemove(i)}>Delete</span>
 
           {
-            (function() {
-              if (edit) {
-                return(
-                <form className="siimple-form" onSubmit={props.handleUpdate}>
-                  <div className="siimple-form-field" style={style}>
-                    <input name="title" type="text" value={text} onChange={handleChange} className="siimple-input"/>
-                    <input type="submit" className="siimple-tag siimple-tag--green siimple-hover" style={btn} onClick={handleTodoUpdate}/>
-                  </div>
-                </form>
-                );
-              } else {
-                return(
-                <span className="siimple-tag siimple-tag--green siimple-hover" style={btn} onClick={() => setEdit(true)}>Edit</span>
-                );
-              }
-            })()
+            edit
+              ? <span className="siimple-tag siimple-tag--green siimple-hover" style={btn} onClick={handleTodoUpdate}>Update</span>
+              : <span className="siimple-tag siimple-tag--green siimple-hover" style={btn} onClick={() => setEdit(true)}>Edit</span>
           }
           
         </li>
