@@ -36,6 +36,7 @@ const Todo = (props) => {
               : todo.title
           }
           <span className="siimple-tag siimple-tag--error siimple-hover" style={btn} onClick={() => props.handleRemove(i)}>Delete</span>
+         
 
           {/* {
             edit
