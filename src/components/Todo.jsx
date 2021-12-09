@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import Button from './Button';
 
 let style = {
   maxWidth: '50%',
@@ -36,10 +37,16 @@ const Todo = (props) => {
           }
           <span className="siimple-tag siimple-tag--error siimple-hover" style={btn} onClick={() => props.handleRemove(i)}>Delete</span>
 
-          {
+          {/* {
             edit
               ? <span className="siimple-tag siimple-tag--green siimple-hover" style={btn} onClick={handleTodoUpdate}>Update</span>
               : <span className="siimple-tag siimple-tag--green siimple-hover" style={btn} onClick={() => setEdit(true)}>Edit</span>
+          } */}
+
+          {
+            edit
+              ? <Button onClick={handleTodoUpdate}/>
+              : <Button onClick={() => setEdit(true)}/>
           }
           
         </li>
