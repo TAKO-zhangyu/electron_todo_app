@@ -4,8 +4,8 @@ let btn = {
   cursor: 'pointer'
 };
 
-const Button = ({onClick}) => {
-  return <span className="siimple-tag siimple-tag--green siimple-hover" style={btn} onClick={onClick}>更新も編集もこれ一個ボタン</span>;
+const Button = ({ onClick, children, className }) => {
+  return <span className={className} style={btn} onClick={onClick}>{children}</span>;
 };
 
 export default Button;

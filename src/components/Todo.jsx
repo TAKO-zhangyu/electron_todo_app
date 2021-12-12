@@ -35,19 +35,13 @@ const Todo = (props) => {
               ? <input name="title" type="text" value={text} onChange={handleChange} className="siimple-input"/>
               : todo.title
           }
-          <span className="siimple-tag siimple-tag--error siimple-hover" style={btn} onClick={() => props.handleRemove(i)}>Delete</span>
-         
 
-          {/* {
-            edit
-              ? <span className="siimple-tag siimple-tag--green siimple-hover" style={btn} onClick={handleTodoUpdate}>Update</span>
-              : <span className="siimple-tag siimple-tag--green siimple-hover" style={btn} onClick={() => setEdit(true)}>Edit</span>
-          } */}
+          <Button className={`siimple-tag siimple-tag--error siimple-hover`} onClick={() => props.handleRemove(i)}>Delete</Button>
 
           {
             edit
-              ? <Button onClick={handleTodoUpdate}/>
-              : <Button onClick={() => setEdit(true)}/>
+              ? <Button className={`siimple-tag siimple-tag--green siimple-hover`} onClick={handleTodoUpdate}>Update</Button>
+              : <Button className={`siimple-tag siimple-tag--green siimple-hover`} onClick={() => setEdit(true)}>Edit</Button>
           }
           
         </li>
