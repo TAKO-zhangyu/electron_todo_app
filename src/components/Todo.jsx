@@ -36,12 +36,12 @@ const Todo = (props) => {
               : todo.title
           }
 
-          <Button className={`siimple-tag siimple-tag--error siimple-hover`} onClick={() => props.handleRemove(i)}>Delete</Button>
+          <Button className={`siimple-tag--error`} onClick={() => props.handleRemove(i)}>Delete</Button>
 
           {
             edit
-              ? <Button className={`siimple-tag siimple-tag--green siimple-hover`} onClick={handleTodoUpdate}>Update</Button>
-              : <Button className={`siimple-tag siimple-tag--green siimple-hover`} onClick={() => setEdit(true)}>Edit</Button>
+              ? <Button className={`siimple-tag--green`} onClick={handleTodoUpdate}>Update</Button>
+              : <Button className={`siimple-tag--green`} onClick={() => setEdit(true)}>Edit</Button>
           }
           
         </li>

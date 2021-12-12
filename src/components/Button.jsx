@@ -5,6 +5,7 @@ let btn = {
 };
 
 const Button = ({ onClick, children, className }) => {
+  className += ' siimple-tag siimple-hover';
   return <span className={className} style={btn} onClick={onClick}>{children}</span>;
 };
 
