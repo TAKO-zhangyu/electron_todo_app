@@ -19,11 +19,11 @@ const App = () => {
     setTodo({todo: todo.splice(i,1)});
   };
 
-  // データ更新
-  handleUpdate(text, i){
-    this.state.todo[i].title = text;
+  const handleUpdate = (text, i) => {
+    // this.state.todo[i].title = text;
     this.setState({todo: this.state.todo});
-  }
+    setTodo({todo: xxx);
+  };
 
 
   return (
