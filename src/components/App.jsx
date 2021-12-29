@@ -1,40 +1,46 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Form from './Form';
 import List from  './List';
 
 const App = () => {
-  const [todo, setTodo] = useState([]);
+  const [todos, setTodos] = useState([]);
 
-  const handleAdd = useCallback(
-    // e.preventDefault();
-    (e) => {
-      setTodo(e.target.title.value);
-    },
-    [setTodo]
-    // e.target.title.value = '';
-  );
+  const handleAdd = (e) => {
+    e.preventDefault();
+    const newTodo = { title: e.target.title.value };
+    const newTodos = [...todos, newTodo];
+    setTodos(newTodos);
+    e.target.title.value = '';
+  };
 
   const handleRemove = (i) => {
     // useState({title: e.target.title.value});
-    setTodo({todo: todo.splice(i,1)});
+    // setTodos({todo: todos.splice(i,1)});
+
+    // const newTodo = todoList.splice((todo) => todo.title == e.target.title.value);
+    // setTodos({todo: todos.splice(i,1)});
+    console.log(todos)
+    const newTodos = [...todos]
+    newTodos.splice(i,1);
+    setTodos(newTodos);
   };
 
   const handleUpdate = (text, i) => {
-    // this.state.todo[i].title = text;
-    this.setState({todo: this.state.todo});
-    setTodo({todo: xxx);
+    const newTodos = [...todos]
+    newTodos[i].title= text;
+    setTodos(newTodos);
   };
 
 
   return (
     <div className="siimple-box siimple--bg-dark">
       <h1 className="siimple-box-title siimple--color-white">React Todo App</h1>
-      <Form handleAdd={this.handleAdd}/>
+      <Form handleAdd={handleAdd}/>
       <div className="siimple-rule"></div>
       <List 
-        todos={this.state.todo}
-        handleRemove={this.handleRemove}
-        handleUpdate={this.handleUpdate}
+        todos={todos}
+        handleRemove={handleRemove}
+        handleUpdate={handleUpdate}
       />
     </div>
   );
