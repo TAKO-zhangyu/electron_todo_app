@@ -1,9 +1,13 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Form from './Form';
 import List from  './List';
 
 const App = () => {
   const [todos, setTodos] = useState([]);
+
+  useEffect(()=>{
+    console.log("やあ")
+  })
 
   const handleAdd = (e) => {
     e.preventDefault();
