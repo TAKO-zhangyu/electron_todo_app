@@ -14,12 +14,6 @@ const App = () => {
   };
 
   const handleRemove = (i) => {
-    // useState({title: e.target.title.value});
-    // setTodos({todo: todos.splice(i,1)});
-
-    // const newTodo = todoList.splice((todo) => todo.title == e.target.title.value);
-    // setTodos({todo: todos.splice(i,1)});
-    console.log(todos)
     const newTodos = [...todos]
     newTodos.splice(i,1);
     setTodos(newTodos);
