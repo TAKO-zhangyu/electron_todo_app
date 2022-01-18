@@ -2,8 +2,50 @@
 const {app, BrowserWindow} = require('electron')
 const path = require('path')
 const isDev = require("electron-is-dev");
+const storage = require('electron-json-storage');
+
+
+// var data = { // 仮のJSONデータの材料
+//   site_name: "Sample site",
+//   site_url: "http://sample.com"
+// };
+// storage.set('config.json', data, function (error) { // 書き出し（sample/config.jsonとディレクトリを指定することも可能）
+//   if (error) throw error;
+// });
+// storage.get('config.json', function(error, data) { // 読み込みしてHTMLに書き出す
+//   if (error) throw error;
+//   document.getElementById("site-name").innerHTML = data.site_name;
+//   document.getElementById("site-url").innerHTML = data.site_url;
+// });
+
+// function sample2() {
+//   // 保存
+//   storage.set('aisatsu', 'Helloworld')
+//   console.log("保存っす")
+// }
+
+// function sample2() {
+//   // 取り出し
+//   const value = storage.get('aisatsu')
+//   console.log("取り出しっす")
+// }
+
+// function sample2() {
+//   // 削除
+// storage.delete('aisatsu')
+// console.log("削除っす")
+// }
 
 function createWindow () {
+ // 保存
+ storage.set('aisatsu', 'Helloworld')
+ console.log("保存っす")
+ console.log(storage)
+
+ // 取り出し
+ storage.get('aisatsu')
+ console.log("取り出しっす")
+ console.log(storage)
  // Create the browser window.
  const mainWindow = new BrowserWindow({
    width: 800,
