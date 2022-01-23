@@ -1,13 +1,11 @@
 import React, { useState } from 'react';
 import Button from './Button';
 
+// CSSファイル作る
+// StyledComponent
 let style = {
   maxWidth: '50%',
   margin: '0 auto',
-};
-
-let btn = {
-  cursor: 'pointer'
 };
 
 // 分割代入 -> { i, todo } 

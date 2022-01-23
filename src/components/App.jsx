@@ -1,9 +1,13 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Form from './Form';
 import List from  './List';
 
 const App = () => {
   const [todos, setTodos] = useState([]);
+
+  useEffect(()=>{
+    console.log("やあ")
+  })
 
   const handleAdd = (e) => {
     e.preventDefault();
@@ -14,12 +18,6 @@ const App = () => {
   };
 
   const handleRemove = (i) => {
-    // useState({title: e.target.title.value});
-    // setTodos({todo: todos.splice(i,1)});
-
-    // const newTodo = todoList.splice((todo) => todo.title == e.target.title.value);
-    // setTodos({todo: todos.splice(i,1)});
-    console.log(todos)
     const newTodos = [...todos]
     newTodos.splice(i,1);
     setTodos(newTodos);
