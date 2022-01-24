@@ -1,5 +1,5 @@
 // Modules to control application life and create native browser window
-const {app, BrowserWindow} = require('electron')
+const {app, BrowserWindow, ipcMain, dialog} = require('electron')
 const path = require('path')
 const isDev = require("electron-is-dev");
 const storage = require('electron-json-storage');
@@ -37,6 +37,21 @@ const storage = require('electron-json-storage');
 // }
 
 function createWindow () {
+  ipcMain.handle('open-dialog', async (_e, _arg) => {
+    return dialog
+      // ファイル選択ダイアログを表示する
+      .showOpenDialog(mainWindow, {
+        properties: ['openFile'],
+      })
+      .then((result) => {
+        // キャンセルボタンが押されたとき
+        if (result.canceled) return '';
+
+        // 選択されたファイルの絶対パスを返す
+        return result.filePaths[0];
+      });
+  });
+
  // 保存
  storage.set('aisatsu', 'Helloworld')
  console.log("保存っす")
@@ -51,7 +66,9 @@ function createWindow () {
    width: 800,
    height: 600,
    webPreferences: {
-     preload: path.join(__dirname, 'preload.js')
+     preload: path.join(__dirname, 'preload.js'),
+     nodeIntegration: true,
+     contextIsolation: false,
    }
  })
 
