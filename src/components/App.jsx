@@ -1,13 +1,21 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, ipcRenderer } from 'react';
 import Form from './Form';
 import List from  './List';
 
 const App = () => {
   const [todos, setTodos] = useState([]);
+  const button = document.getElementById('button');
+  const text = document.getElementById('text');
 
-  useEffect(()=>{
-    console.log("やあ")
-  })
+  button.addEventListener('click', async () => {
+    text.textContent = ipcRenderer.invoke('open-dialog');
+  });
+
+  // useEffect(()=>{
+  //   button.addEventListener('click', async () => {
+  //     text.textContent = ipcRenderer.invoke('open-dialog');
+  //   });
+  // });
 
   const handleAdd = (e) => {
     e.preventDefault();
