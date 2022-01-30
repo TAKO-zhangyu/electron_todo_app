@@ -1,21 +1,19 @@
-import React, { useState, useEffect, ipcRenderer } from 'react';
+import React, { useState, useEffect } from 'react';
 import Form from './Form';
 import List from  './List';
+const { ipcRenderer } = window.require("electron");
 
 const App = () => {
   const [todos, setTodos] = useState([]);
   const button = document.getElementById('button');
   const text = document.getElementById('text');
 
-  button.addEventListener('click', async () => {
+  // なんでこんな罠が発動するのか、useEffectの仕様を把握しろ
+  useEffect(()=>{
     text.textContent = ipcRenderer.invoke('open-dialog');
   });
 
-  // useEffect(()=>{
-  //   button.addEventListener('click', async () => {
-  //     text.textContent = ipcRenderer.invoke('open-dialog');
-  //   });
-  // });
+  // useEffectを複数使い、毎回呼び出す用と起動時だけ呼び出す用のものを用意
 
   const handleAdd = (e) => {
     e.preventDefault();
