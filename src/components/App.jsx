@@ -5,15 +5,18 @@ const { ipcRenderer } = window.require("electron");
 
 const App = () => {
   const [todos, setTodos] = useState([]);
-  const button = document.getElementById('button');
-  const text = document.getElementById('text');
 
-  // なんでこんな罠が発動するのか、useEffectの仕様を把握しろ
+  // 最初だけ発動
   useEffect(()=>{
-    text.textContent = ipcRenderer.invoke('open-dialog');
-  });
+    ipcRenderer.invoke('read_storage').then((todos_json) => {
+      setTodos(todos_json);
+    })
+  }, []);
 
-  // useEffectを複数使い、毎回呼び出す用と起動時だけ呼び出す用のものを用意
+  // todosが変わるたびに発動
+  useEffect(()=>{
+    ipcRenderer.invoke('commit_storage', todos);
+  });
 
   const handleAdd = (e) => {
     e.preventDefault();
